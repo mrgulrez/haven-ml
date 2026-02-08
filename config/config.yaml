@@ -1,0 +1,197 @@
+# Multimodal Affective Computing System Configuration
+
+# System Settings
+system:
+  log_level: "INFO"
+  log_dir: "./logs"
+  enable_gpu: false
+  device: "cpu"  # cuda, cpu, or mps (for Mac)
+  
+# LiveKit Configuration
+livekit:
+  url: "ws://localhost:7880"  # Update for production
+  api_key: "${LIVEKIT_API_KEY}"
+  api_secret: "${LIVEKIT_API_SECRET}"
+  room_prefix: "empathy_"
+  
+# Model Paths and Settings
+models:
+  # Vision Models
+  vision:
+    hsemotion:
+      model_name: "enet_b0_8_best_afew"
+      device: "cuda"
+      batch_size: 1
+      fps_target: 30  # Process every Nth frame
+    
+    mediapipe:
+      model_complexity: 1  # 0=lite, 1=full, 2=heavy
+      min_detection_confidence: 0.5
+      min_tracking_confidence: 0.5
+    
+    gaze:
+      enabled: true
+      smoothing_window: 5
+  
+  # Audio Models
+  audio:
+    silero_vad:
+      model_path: "./models/audio/silero_vad.jit"
+      threshold: 0.5
+      min_speech_duration_ms: 250
+      min_silence_duration_ms: 500
+    
+    # Whisper Speech-to-Text
+    whisper:
+      model_size: "base"  # tiny, base, small, medium, large
+      device: "cpu"
+    
+    # SenseVoice Speech-to-Text (fallback)
+    sensevoice:
+      model_name: "iic/SenseVoiceSmall"
+      device: "cuda"
+      language: "auto"  # auto, en, zh, ja, ko
+      use_int8: true
+    
+    wav2vec2:
+      model_name: "audeering/wav2vec2-large-robust-12-ft-emotion-msp-dim"
+      device: "cuda"
+      features: ["arousal", "valence", "dominance"]
+  
+  # Fusion Model
+  fusion:
+    model_path: "./models/fusion/fusion_transformer.pt"
+    temporal_window: 30  # Number of frames to smooth over
+    confidence_threshold: 0.6
+    device: "cuda"
+  
+  # LLM Configuration
+  llm:
+    model_path: "./models/llm/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf"
+    context_length: 8192
+    temperature: 0.7
+    top_p: 0.9
+    top_k: 40
+    max_tokens: 512
+    n_gpu_layers: 0  # Set to 0 for CPU, 40 for GPU
+    n_threads: 8
+    streaming: true
+  
+  # TTS Configuration
+  tts:
+    provider: "cosyvoice"  # cosyvoice, elevenlabs, coqui
+    cosyvoice:
+      model_path: "./models/tts/cosyvoice2"
+      voice_preset: "empathy_default"
+      streaming: true
+      chunk_size: 512
+    
+    elevenlabs:  # Fallback/alternative
+      api_key: "${ELEVENLABS_API_KEY}"
+      voice_id: "21m00Tcm4TlvDq8ikWAM"  # Rachel
+      model_id: "eleven_turbo_v2"
+      stability: 0.5
+      similarity_boost: 0.75
+
+# Memory & Context
+memory:
+  storage:
+    type: "redis"  # redis or mongodb
+    redis:
+      host: "localhost"
+      port: 6379
+      db: 0
+      password: "${REDIS_PASSWORD}"
+    mongodb:
+      url: "${MONGODB_URL}"
+      database: "empathy_system"
+  
+  session:
+    max_duration_hours: 8
+    save_interval_seconds: 60
+  
+  user_profile:
+    retention_days: 90
+    enable_analytics: true
+
+# Intervention System
+intervention:
+  enabled: true
+  min_interval_seconds: 300  # Don't intervene more than once per 5 min
+  
+  triggers:
+    prolonged_silence:
+      duration_seconds: 120
+      emotion_filter: ["sad", "distressed", "neutral"]
+    
+    prolonged_sitting:
+      duration_seconds: 7200  # 2 hours
+      posture_filter: ["slouching", "still"]
+    
+    voice_tremor:
+      threshold: 0.7
+      context: ["presentation", "practice"]
+    
+    distraction:
+      phone_checks_per_minute: 5
+      duration_seconds: 300
+
+# Privacy & Security
+privacy:
+  edge_processing:
+    enabled: true
+    models_to_run_locally: ["hsemotion", "mediapipe", "silero_vad"]
+  
+  encryption:
+    enabled: true
+    algorithm: "AES-256-GCM"
+    key_rotation_days: 30
+  
+  data_retention:
+    session_data_hours: 24
+    user_profiles_days: 90
+    enable_forget_feature: true
+  
+  hardware_controls:
+    camera_shutter_gpio: null  # Set GPIO pin for hardware shutter
+    mute_button_gpio: null     # Set GPIO pin for hardware mute
+
+# Personas
+personas:
+  remote_worker:
+    intervention_style: "professional_supportive"
+    focus_areas: ["work_life_balance", "productivity", "social_connection"]
+    tone: "encouraging"
+    proactivity_level: "medium"
+  
+  student:
+    intervention_style: "motivational_coach"
+    focus_areas: ["study_habits", "exam_anxiety", "sleep_hygiene"]
+    tone: "friendly"
+    proactivity_level: "high"
+  
+  young_professional:
+    intervention_style: "confidence_coach"
+    focus_areas: ["imposter_syndrome", "presentation_skills", "validation"]
+    tone: "empowering"
+    proactivity_level: "medium"
+
+# Performance Targets
+performance:
+  latency:
+    target_ms: 500
+    max_acceptable_ms: 1000
+    
+  throughput:
+    max_concurrent_users: 15  # Per agent worker
+    
+  monitoring:
+    prometheus_port: 9090
+    enable_profiling: true
+
+# Development & Testing
+development:
+  debug_mode: false
+  mock_models: false  # Use real models
+  save_debug_frames: false
+  test_persona: "remote_worker"

@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Models (large files)
+models/**/*.pt
+models/**/*.gguf
+models/**/*.bin
+models/**/*.safetensors
+*.pth
+*.onnx
+
+# Data
+data/
+*.csv
+*.json
+!config/*.json
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Docker
+*.tar
+
+# Monitoring
+prometheus_data/
