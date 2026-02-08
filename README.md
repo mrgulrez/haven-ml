@@ -106,10 +106,7 @@ See `task.md` for detailed roadmap.
 - **Throughput**: 10-15 concurrent users per A10G GPU
 - **Accuracy**: >85% emotion classification
 
-## License
 
-[To be determined]
 
 ## Contact
-
-[To be determined]
+egulrezalam@gmail.com
