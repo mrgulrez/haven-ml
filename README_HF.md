@@ -144,7 +144,7 @@ If you use this system in your research, please cite:
   title={Empathy System: Multimodal Emotion AI},
   author={Your Name},
   year={2024},
-  url={https://huggingface.co/spaces/your-username/empathy-system}
+  url={https://huggingface.co/spaces/your-username/haven-ml}
 }
 ```
 

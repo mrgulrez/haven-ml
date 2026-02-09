@@ -2,7 +2,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Hugging Face](https://img.shields.io/badge/🤗-Hugging%20Face-orange)](https://huggingface.co/spaces/YOUR_USERNAME/empathy-system)
+[![Hugging Face](https://img.shields.io/badge/🤗-Hugging%20Face-orange)](https://huggingface.co/spaces/mrgulrez/haven-ml)
 
 > **An advanced AI system that understands human emotions through facial expressions and voice tone, providing empathetic and contextually appropriate responses.**
 
@@ -27,14 +27,14 @@ The Empathy System is a complete multimodal affective computing platform that co
 
 ### Try the Live Demo
 
-**[🌐 Try it on Hugging Face Spaces](https://huggingface.co/spaces/YOUR_USERNAME/empathy-system)**
+**[🌐 Try it on Hugging Face Spaces](https://huggingface.co/spaces/mrgulrez/haven-ml)**
 
 ### Run Locally
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/empathy-system.git
-cd empathy-system
+git clone https://github.com/mrgulrez/haven-ml.git
+cd haven-ml
 
 # Create virtual environment
 python -m venv venv
@@ -221,7 +221,7 @@ Triggers based on behavioral patterns:
 ## 📁 Project Structure
 
 ```
-empathy-system/
+haven-ml/
 ├── agents/                 # EmpathyAgent orchestration
 │   ├── empathy_agent.py   # Main agent class
 │   └── intervention.py    # Proactive intervention logic
@@ -314,8 +314,8 @@ empathy-system/
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/empathy-system.git
-cd empathy-system
+git clone https://github.com/mrgulrez/haven-ml.git
+cd haven-ml
 ```
 
 ### Step 2: Create Virtual Environment
@@ -459,10 +459,10 @@ See [HF Deployment Guide](docs/HF_DEPLOYMENT.md) for step-by-step instructions.
 
 ```bash
 # Build image
-docker build -t empathy-system .
+docker build -t haven-ml .
 
 # Run container
-docker run -p 7860:7860 empathy-system
+docker run -p 7860:7860 haven-ml
 ```
 
 ### Cloud Platforms
@@ -551,14 +551,14 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 📧 Contact
 
-- **GitHub**: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
+- **GitHub**: [@mrgulrez](https://github.com/mrgulrez)
 - **Email**: your.email@example.com
 - **LinkedIn**: [Your Name](https://linkedin.com/in/yourprofile)
 - **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
 
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=YOUR_USERNAME/empathy-system&type=Date)](https://star-history.com/#YOUR_USERNAME/empathy-system&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=mrgulrez/haven-ml&type=Date)](https://star-history.com/#mrgulrez/haven-ml&Date)
 
 ## 📈 Roadmap
 
@@ -577,6 +577,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 **Built with ❤️ for advancing empathetic AI**
 
-[Try Demo](https://huggingface.co/spaces/YOUR_USERNAME/empathy-system) • [Report Bug](https://github.com/YOUR_USERNAME/empathy-system/issues) • [Request Feature](https://github.com/YOUR_USERNAME/empathy-system/issues)
+[Try Demo](https://huggingface.co/spaces/mrgulrez/haven-ml) • [Report Bug](https://github.com/mrgulrez/haven-ml/issues) • [Request Feature](https://github.com/mrgulrez/haven-ml/issues)
 
 </div>
