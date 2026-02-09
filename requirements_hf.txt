@@ -1,0 +1,28 @@
+# Empathy System Requirements for Hugging Face Spaces
+
+# Core dependencies
+gradio>=4.0.0
+numpy>=1.24.0
+opencv-python-headless>=4.8.0
+pillow>=10.0.0
+loguru>=0.7.0
+
+# Vision models
+deepface>=0.0.79
+tf-keras>=2.15.0
+tensorflow>=2.15.0
+
+# Audio models  
+openai-whisper>=20231117
+transformers>=4.35.0
+torch>=2.0.0
+librosa>=0.10.0
+soundfile>=0.12.0
+
+# LLM (optional - may need to use API instead)
+# llama-cpp-python>=0.2.0  # Large model, consider using API
+
+# Utilities
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
