@@ -558,9 +558,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 📧 Contact
 
 - **GitHub**: [@mrgulrez](https://github.com/mrgulrez)
-- **Email**: your.email@example.com
-- **LinkedIn**: [Your Name](https://linkedin.com/in/yourprofile)
-- **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
+- **Email**: egulrezalam@gmail.com
+- **LinkedIn**: [Gulrez Alam](https://linkedin.com/in/mrgulrez)
 
 ## 🌟 Star History
 
